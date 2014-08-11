@@ -30,7 +30,12 @@ GO
 SELECT * FROM T2
 GO
 
+
 GO
+
+SELECT '''bla GO ' FROM T4
+GO
+
 
 SELECT * FROM T3
 GO
