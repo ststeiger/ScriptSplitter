@@ -46,6 +46,50 @@ GO
             }
 
 
+            System.Data.SqlClient.SqlConnectionStringBuilder csb = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            csb.DataSource = "localhost";
+            csb.InitialCatalog="pdns";
+            csb.IntegratedSecurity=true;
+
+
+
+            System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(csb.ConnectionString);
+
+            System.Data.SqlClient.SqlCommand cmd = con.CreateCommand();
+            cmd.CommandText = @"
+INSERT INTO Domains
+(
+	 name
+	,master
+	,last_check
+	,type
+	,notified_serial
+	,account
+)
+OUTPUT Inserted.id
+VALUES
+(
+	 CAST(newid() as varchar(36)) -- name varchar(255),>
+	,'master' -- master varchar(128),>
+	,'' -- last_check int,>
+	,'type' -- type varchar(6),>
+	,'123' -- notified_serial int,>
+	,'account' -- account varchar(40),>
+)
+;
+
+";
+
+            if (con.State != System.Data.ConnectionState.Open)
+                con.Open();
+
+            object bla = cmd.ExecuteScalar();
+            Console.WriteLine(bla);
+
+            if(con.State != System.Data.ConnectionState.Closed)
+                con.Close();
+
+
 
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine(" --- Press any key to continue --- ");
