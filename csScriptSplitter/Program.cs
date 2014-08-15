@@ -30,16 +30,47 @@ GO
 SELECT * FROM T2
 GO
 
+SELECT * FROM T3a
+
+go
 
 GO
 
 SELECT '''bla GO ' FROM T4
 GO
 
+CREATE PROCEDURE GOGO
+BEGIN
+   PRINT 'abc' 
+END
 
+
+GO
+
+SELECT
+    '
+    GO
+    ' as hoi
+GO
+
+SELECT
+    '
+    GO
+    '
+AS GO
+
+GO
+
+SELECT
+    '
+    GO
+    '
+[GO--go]
+GO
 SELECT * FROM T3
 GO
 ");
+
             foreach (string str in scs)
             {
                 Console.WriteLine(str);
@@ -80,14 +111,27 @@ VALUES
 
 ";
 
-            if (con.State != System.Data.ConnectionState.Open)
-                con.Open();
 
-            object bla = cmd.ExecuteScalar();
-            Console.WriteLine(bla);
+            
+            
 
-            if(con.State != System.Data.ConnectionState.Closed)
-                con.Close();
+            //if (con.State != System.Data.ConnectionState.Open)
+            //    con.Open();
+
+            
+            //object bla = cmd.ExecuteScalar();
+            //Console.WriteLine(bla);
+
+
+
+            //using(System.Data.SqlClient.SqlDataReader dr = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection))
+            //{
+            //    // dr.GetValue(dr.GetOrdinal("COLUMN_NAME"));
+            //}
+
+
+            //if(con.State != System.Data.ConnectionState.Closed)
+            //    con.Close();
 
 
 
