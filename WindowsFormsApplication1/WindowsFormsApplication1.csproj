@@ -87,6 +87,7 @@
   <ItemGroup>
     <Content Include="HTML\htm1.htm" />
     <Content Include="HTML\htm2.htm" />
+    <Content Include="HTML\html4.htm" />
     <Content Include="HTML\htm3.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
